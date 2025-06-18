@@ -1,11 +1,16 @@
 import CountdownTimer from './CountdownTimer'
+import ThemeToggle from './ThemeToggle'
+import { ThemeProvider } from './ThemeContext'
 import './App.css'
 
 function App() {
   return (
-    <div className="app">
-      <CountdownTimer />
-    </div>
+    <ThemeProvider>
+      <div className="app">
+        <ThemeToggle />
+        <CountdownTimer />
+      </div>
+    </ThemeProvider>
   )
 }
 

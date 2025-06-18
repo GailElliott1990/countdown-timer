@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3] - 2025-06-18
+
+### Added
+- Manual theme toggle menu with three options: Auto, Light, Dark
+- Fixed position theme toggle button in top-right corner
+- Theme preference persistence using localStorage
+- Visual theme indicators with emojis (🔄 Auto, ☀️ Light, 🌙 Dark)
+
+### Enhanced
+- Theme system now supports manual override of system preferences
+- Added backdrop blur effect to theme toggle button
+- Improved accessibility with descriptive button titles
+- Mobile-responsive theme toggle design
+
+### Technical
+- Created ThemeContext for centralized theme state management
+- Added ThemeToggle component with React hooks
+- Implemented CSS data-theme attribute overrides
+- Enhanced theme switching with smooth transitions
+
 ## [0.1.2] - 2025-06-18
 
 ### Changed

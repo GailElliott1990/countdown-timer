@@ -93,6 +93,21 @@
   }
 }
 
+/* Manual theme overrides */
+[data-theme="light"] {
+  --text-primary: #213547;
+  --text-secondary: rgba(33, 53, 71, 0.8);
+  --accent-color: #535bf2;
+  --background: #fbfbf6;
+}
+
+[data-theme="dark"] {
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --accent-color: #646cff;
+  --background: #242424;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .countdown-container {
