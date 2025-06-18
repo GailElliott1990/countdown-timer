@@ -13,23 +13,23 @@ export const useTheme = () => {
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme')
-    return saved || 'auto'
+    return saved || 'system'
   })
 
   useEffect(() => {
     localStorage.setItem('theme', theme)
-    
     const root = document.documentElement
     
-    if (theme === 'auto') {
-      root.removeAttribute('data-theme')
+    if (theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      root.setAttribute('data-theme', systemTheme)
     } else {
       root.setAttribute('data-theme', theme)
     }
   }, [theme])
 
   const toggleTheme = () => {
-    const themes = ['auto', 'light', 'dark']
+    const themes = ['system', 'light', 'dark']
     const currentIndex = themes.indexOf(theme)
     const nextIndex = (currentIndex + 1) % themes.length
     setTheme(themes[nextIndex])

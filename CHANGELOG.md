@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4] - 2025-06-18
+
+### Added
+- Vercel-style theme toggle with System/Light/Dark options
+- Professional SVG icons for each theme option (monitor, sun, moon)
+- System theme detection that follows OS preferences
+- Icon-text layout with proper spacing and alignment
+
+### Enhanced
+- Redesigned theme toggle to match Vercel's design system
+- Improved backdrop blur effect and glass-morphism styling
+- Better contrast with high-quality color variables
+- Enhanced mobile responsiveness for icon sizes
+- Faster transitions (0.15s) for modern app feel
+
+### Technical
+- Added custom SVG icon components (SystemIcon, SunIcon, MoonIcon)
+- Implemented Lucide-inspired icon design patterns
+- Updated ThemeContext to handle system preference detection
+- Enhanced CSS with flexbox layout for icon-text alignment
+- Improved accessibility with proper icon sizing
+
 ## [0.1.3] - 2025-06-18
 
 ### Added

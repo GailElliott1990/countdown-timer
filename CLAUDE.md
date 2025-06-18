@@ -23,14 +23,18 @@ The app is configured for Vercel deployment with automatic builds from the `dist
 ## Architecture
 
 **Component Structure:**
-- `App.jsx` - Root component containing the main application structure
+- `App.jsx` - Root component with ThemeProvider wrapper and main application structure
 - `CountdownTimer.jsx` - Core countdown logic with React hooks for state management and time calculations
+- `ThemeToggle.jsx` - Vercel-style theme switcher with System/Light/Dark options
+- `ThemeContext.jsx` - React context for centralized theme state management
 - Target date is hardcoded as `new Date('2025-07-05T08:00:00')` in CountdownTimer component
 
 **Key Features:**
 - Real-time updates every second using `setInterval`
 - Responsive design with CSS clamp() for scalable typography
-- Dark/light theme support via CSS custom properties
+- Vercel-style theme toggle with professional SVG icons
+- System theme detection that follows OS preferences
+- Theme preference persistence via localStorage
 - Safari-specific optimizations including font smoothing
 
 **Time Calculation Logic:**
@@ -46,15 +50,24 @@ The app is configured for Vercel deployment with automatic builds from the `dist
 - Global styles in `index.css`
 
 **Theme System:**
-- **Dark Mode** (default): Dark background (#242424) with light text for better night viewing
-- **Light Mode**: Cream background (#fbfbf6) with dark text for comfortable day viewing  
-- Automatic switching based on system `prefers-color-scheme` setting
-- Consistent color variables defined in CSS custom properties
-- Enhanced contrast ratios for accessibility
+- **Vercel-Style Toggle**: Fixed-position button in top-right corner with icon-text layout
+- **Three Theme Options**:
+  - **System** (🖥️): Follows OS `prefers-color-scheme` preference automatically
+  - **Light** (☀️): Cream background (#fbfbf6) with dark text
+  - **Dark** (🌙): Dark background (#242424) with light text
+- **Professional Icons**: Custom SVG icons (monitor, sun, moon) inspired by Lucide design
+- **Theme Persistence**: User preference saved in localStorage with system as default
+- **Modern Styling**: Backdrop blur, glass-morphism effects, and Vercel-inspired aesthetics
+- **Responsive Design**: Adaptive icon sizes and spacing for mobile devices
+- **Smooth Transitions**: Fast 0.15s animations for modern app experience
 
 ## Key Files
 
 - `src/CountdownTimer.jsx` - Main countdown component with time calculation logic
-- `src/App.css` - Primary styling with responsive design and animations
+- `src/ThemeContext.jsx` - React context for theme state management with system detection
+- `src/ThemeToggle.jsx` - Vercel-style theme toggle with SVG icons and accessibility
+- `src/ThemeToggle.css` - Theme toggle styling with glass-morphism and responsive design
+- `src/App.css` - Primary styling with responsive design, animations, and theme variables
+- `src/index.css` - Global styles with manual theme overrides and base styling
 - `vercel.json` - Vercel deployment configuration
 - `vite.config.js` - Vite build configuration with React plugin
