@@ -4,10 +4,11 @@ A clean, minimal React web application that displays a live countdown timer show
 
 ## Features
 
-- **Real-time Updates**: Automatically updates every minute
+- **Real-time Updates**: Automatically updates every second for precise timing
 - **Clean Design**: Minimal, modern interface optimized for Safari
 - **Responsive**: Works on both desktop and mobile devices
-- **Dark/Light Theme**: Automatically adapts to system preferences
+- **Theme System**: Vercel-style theme toggle with System/Light/Dark modes
+- **Visual Polish**: Properly aligned time separators with pulsing animation
 - **Safari Optimized**: Includes specific optimizations for Safari browsers
 
 ## Setup Instructions
@@ -61,8 +62,11 @@ npm run preview
 countdown_timer/
 ├── src/
 │   ├── CountdownTimer.jsx    # Main countdown component
+│   ├── ThemeContext.jsx      # Theme state management
+│   ├── ThemeToggle.jsx       # Theme switcher component
 │   ├── App.jsx              # Root application component
 │   ├── App.css              # Styling for the countdown
+│   ├── ThemeToggle.css      # Theme toggle styling
 │   ├── index.css            # Global styles
 │   └── main.jsx             # Application entry point
 ├── public/                  # Static assets
@@ -75,10 +79,11 @@ countdown_timer/
 
 The countdown timer:
 - Calculates the time difference between now and July 5th, 2025 at 8:00 AM
-- Updates every minute to show current hours and minutes remaining
+- Updates every second to show current hours, minutes, and seconds remaining
 - Displays "Time's Up!" message when the target time is reached
 - Uses responsive design with CSS clamp() for scalable text
-- Includes subtle animations like a pulsing colon separator
+- Features vertically centered colon separators with pulsing animation
+- Includes a Vercel-style theme toggle with System/Light/Dark modes
 
 ## Customization
 

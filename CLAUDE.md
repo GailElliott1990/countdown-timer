@@ -48,6 +48,7 @@ The app is configured for Vercel deployment with automatic builds from the `dist
 - Responsive units and clamp() functions
 - Component-scoped styles in `App.css`
 - Global styles in `index.css`
+- Vertically centered time separator colons with adjusted line-height and margin for proper alignment
 
 **Theme System:**
 - **Vercel-Style Toggle**: Fixed-position button in top-right corner with icon-text layout

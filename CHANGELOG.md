@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.5] - 2025-06-19
+
+### Fixed
+- Improved vertical alignment of time separator colons
+- Colons now properly centered relative to time numbers
+- Added line-height adjustment (0.65) for better visual balance
+- Added responsive margin-bottom for consistent alignment across screen sizes
+
+### Technical
+- Updated `.time-separator` CSS with `line-height: 0.65` and `margin-bottom`
+- Enhanced mobile responsiveness for separator alignment
+- Maintained pulsing animation while fixing positioning
+
 ## [0.1.4] - 2025-06-18
 
 ### Added
