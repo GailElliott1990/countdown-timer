@@ -7,7 +7,7 @@ const CountdownTimer = () => {
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date();
-      const target = new Date('2025-10-21T00:00:00');
+      const target = new Date('2025-11-17T00:00:00');
       
       const difference = target.getTime() - now.getTime();
       
@@ -35,7 +35,7 @@ const CountdownTimer = () => {
       <div className="countdown-container">
         <div className="countdown-display">
           <h1>Time's Up!</h1>
-          <p>It's now past midnight on Tuesday, October 21st, 2025</p>
+          <p>It's now past midnight on Monday, November 17th, 2025</p>
         </div>
       </div>
     );
@@ -45,7 +45,7 @@ const CountdownTimer = () => {
     <div className="countdown-container">
       <div className="countdown-display">
         <h1>Time Until Midnight</h1>
-        <h2>Tuesday, October 21st, 2025</h2>
+        <h2>Monday, November 17th, 2025</h2>
         <div className="time-display">
           <div className="time-unit">
             <span className="time-number">{timeLeft.hours}</span>
