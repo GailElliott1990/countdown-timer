@@ -7,7 +7,7 @@ const CountdownTimer = () => {
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date();
-      const target = new Date('2025-11-17T00:00:00');
+      const target = new Date('2025-11-17T00:00:01');
       
       const difference = target.getTime() - now.getTime();
       
