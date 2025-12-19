@@ -8,7 +8,7 @@
   background: var(--background);
   background-size: 320% 320%;
   background-position: 50% 50%;
-  animation: backgroundDrift 60s ease-in-out infinite alternate;
+  animation: backgroundDrift 120s ease-in-out infinite alternate;
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -166,7 +166,7 @@
   filter: blur(36px);
   opacity: 0.85;
   pointer-events: none;
-  animation: slowPulse 45s ease-in-out infinite alternate, streakShift 60s ease-in-out infinite;
+  animation: slowPulse 90s ease-in-out infinite alternate, streakShift 120s ease-in-out infinite;
 }
 
 .app::after {
@@ -182,7 +182,7 @@
   filter: blur(48px);
   opacity: 0.7;
   pointer-events: none;
-  animation: driftOrbit 50s ease-in-out infinite alternate, sheenSweep 40s linear infinite;
+  animation: driftOrbit 100s ease-in-out infinite alternate, sheenSweep 80s linear infinite;
 }
 
 :root {

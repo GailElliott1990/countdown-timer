@@ -27,7 +27,7 @@ function FloatingDust() {
         y: Math.random() * canvas.height,
         r: Math.random() * 2 + 1,
         alpha: Math.random() * 0.3 + 0.1,
-        drift: Math.random() * 0.1 + 0.05
+        drift: Math.random() * 0.03 + 0.01
       })
     }
 
