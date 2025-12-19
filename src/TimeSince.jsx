@@ -21,8 +21,8 @@ const numberFormatter = new Intl.NumberFormat('en-US')
 const STORAGE_KEY_LABEL = 'timeSince:v2:title'
 const STORAGE_KEY_ANCHOR = 'timeSince:v2:anchor'
 
-const DEFAULT_LABEL = 'December 30, 1990 at 8:00 PM'
-const DEFAULT_ANCHOR = new Date('1990-12-30T20:00:00')
+const DEFAULT_LABEL = 'November 30, 1990 at 8:00 PM'
+const DEFAULT_ANCHOR = new Date('1990-11-30T20:00:00')
 
 const TimeSince = () => {
   const [label] = useState(() => localStorage.getItem(STORAGE_KEY_LABEL) || DEFAULT_LABEL)
