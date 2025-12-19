@@ -4,12 +4,6 @@ const DAY = 1000 * 60 * 60 * 24
 const HOUR = 1000 * 60 * 60
 const MINUTE = 1000 * 60
 
-const toLocalInputValue = (date) => {
-  const safeDate = date instanceof Date && !Number.isNaN(date) ? date : new Date()
-  const offsetMs = safeDate.getTimezoneOffset() * 60000
-  return new Date(safeDate.getTime() - offsetMs).toISOString().slice(0, 16)
-}
-
 const formatAnchor = (date) => {
   const safeDate = date instanceof Date && !Number.isNaN(date) ? date : new Date()
   return safeDate.toLocaleString('en-US', {
@@ -31,8 +25,8 @@ const DEFAULT_LABEL = 'December 30, 1990 at 8:00 PM'
 const DEFAULT_ANCHOR = new Date('1990-12-30T20:00:00')
 
 const TimeSince = () => {
-  const [label, setLabel] = useState(() => localStorage.getItem(STORAGE_KEY_LABEL) || DEFAULT_LABEL)
-  const [anchor, setAnchor] = useState(() => {
+  const [label] = useState(() => localStorage.getItem(STORAGE_KEY_LABEL) || DEFAULT_LABEL)
+  const [anchor] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEY_ANCHOR)
     const parsed = saved ? new Date(saved) : DEFAULT_ANCHOR
     return parsed instanceof Date && !Number.isNaN(parsed) ? parsed : DEFAULT_ANCHOR
@@ -43,14 +37,6 @@ const TimeSince = () => {
     const id = setInterval(() => setNow(Date.now()), 1000)
     return () => clearInterval(id)
   }, [])
-
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY_LABEL, label)
-  }, [label])
-
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY_ANCHOR, anchor.toISOString())
-  }, [anchor])
 
   const elapsed = useMemo(() => {
     const delta = now - anchor.getTime()
@@ -72,17 +58,6 @@ const TimeSince = () => {
   const directionLabel = elapsed.direction === 'since' ? 'Elapsed' : 'Starts in'
   const normalizedLabel = label.trim() || 'this moment'
 
-  const handleAnchorChange = (value) => {
-    const parsed = new Date(value)
-    if (!Number.isNaN(parsed)) {
-      setAnchor(parsed)
-    }
-  }
-
-  const setQuickAnchor = (offsetMs) => {
-    setAnchor(new Date(Date.now() - offsetMs))
-  }
-
   return (
     <div className="time-since-app">
       <div className="time-since-shell">
@@ -93,38 +68,6 @@ const TimeSince = () => {
         </div>
 
         <div className="panel-grid">
-          <div className="card controls-card">
-            <div className="field">
-              <div className="field-label">What are you tracking?</div>
-              <input
-                type="text"
-                value={label}
-                onChange={(event) => setLabel(event.target.value)}
-                placeholder="Project kickoff, last coffee, new habit..."
-              />
-            </div>
-
-            <div className="field">
-              <div className="field-label">Start time</div>
-              <input
-                type="datetime-local"
-                value={toLocalInputValue(anchor)}
-                onChange={(event) => handleAnchorChange(event.target.value)}
-              />
-            </div>
-
-            <div className="quick-row">
-              <span className="quick-label">Quick set</span>
-              <div className="quick-actions">
-                <button type="button" onClick={() => setAnchor(new Date(DEFAULT_ANCHOR))}>Default (Dec 30, 1990 @ 8PM)</button>
-                <button type="button" onClick={() => setAnchor(new Date())}>Now</button>
-                <button type="button" onClick={() => setQuickAnchor(60 * 60 * 1000)}>1 hour ago</button>
-                <button type="button" onClick={() => setQuickAnchor(24 * 60 * 60 * 1000)}>1 day ago</button>
-                <button type="button" onClick={() => setQuickAnchor(7 * 24 * 60 * 60 * 1000)}>1 week ago</button>
-              </div>
-            </div>
-          </div>
-
           <div className="card timer-card">
             <div className="pill">{directionLabel}</div>
             <div className="time-grid">
