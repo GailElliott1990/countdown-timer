@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
+const YEAR = 1000 * 60 * 60 * 24 * 365.25  // Average year accounting for leap years
 const DAY = 1000 * 60 * 60 * 24
 const HOUR = 1000 * 60 * 60
 const MINUTE = 1000 * 60
@@ -36,16 +37,18 @@ const TimeSince = () => {
     const direction = delta >= 0 ? 'since' : 'until'
     const magnitude = Math.abs(delta)
 
-    const days = Math.floor(magnitude / DAY)
+    const years = Math.floor(magnitude / YEAR)
+    const days = Math.floor((magnitude % YEAR) / DAY)
     const hours = Math.floor((magnitude % DAY) / HOUR)
     const minutes = Math.floor((magnitude % HOUR) / MINUTE)
     const seconds = Math.floor((magnitude % MINUTE) / 1000)
 
+    const totalDays = Math.floor(magnitude / DAY)
     const totalHours = Math.floor(magnitude / HOUR)
     const totalMinutes = Math.floor(magnitude / MINUTE)
     const totalSeconds = Math.floor(magnitude / 1000)
 
-    return { direction, days, hours, minutes, seconds, totalHours, totalMinutes, totalSeconds }
+    return { direction, years, days, hours, minutes, seconds, totalDays, totalHours, totalMinutes, totalSeconds }
   }, [anchor, now])
 
   const directionLabel = elapsed.direction === 'since' ? 'Elapsed' : 'Starts in'
@@ -64,7 +67,7 @@ const TimeSince = () => {
           <div className="card timer-card">
             <div className="pill">{directionLabel}</div>
             <div className="time-grid">
-              {[{ key: 'days', label: 'Days', value: elapsed.days }, { key: 'hours', label: 'Hours', value: elapsed.hours }, { key: 'minutes', label: 'Minutes', value: elapsed.minutes }, { key: 'seconds', label: 'Seconds', value: elapsed.seconds }].map((item) => (
+              {[{ key: 'years', label: 'Years', value: elapsed.years }, { key: 'days', label: 'Days', value: elapsed.days }, { key: 'hours', label: 'Hours', value: elapsed.hours }, { key: 'minutes', label: 'Minutes', value: elapsed.minutes }, { key: 'seconds', label: 'Seconds', value: elapsed.seconds }].map((item) => (
                 <div className="time-block" key={item.key}>
                   <div className="time-value">{item.value.toString().padStart(2, '0')}</div>
                   <div className="time-label">{item.label}</div>
@@ -77,6 +80,10 @@ const TimeSince = () => {
 
         <div className="stat-grid">
           <div className="stat">
+            <div className="stat-label">Total days</div>
+            <div className="stat-value">{numberFormatter.format(elapsed.totalDays)}</div>
+          </div>
+          <div className="stat">
             <div className="stat-label">Total hours</div>
             <div className="stat-value">{numberFormatter.format(elapsed.totalHours)}</div>
           </div>
@@ -87,10 +94,6 @@ const TimeSince = () => {
           <div className="stat">
             <div className="stat-label">Total seconds</div>
             <div className="stat-value">{numberFormatter.format(elapsed.totalSeconds)}</div>
-          </div>
-          <div className="stat">
-            <div className="stat-label">Week count</div>
-            <div className="stat-value">{numberFormatter.format(Math.floor(elapsed.totalHours / 168))}</div>
           </div>
         </div>
       </div>
